@@ -4,4 +4,9 @@
   }
 </div>
 
-<input #inputEl type="text" (keydown)="keydown($event)">
+<div class="in-row">
+  <input #inputEl type="text" (keydown)="keydown($event)">
+  <button (click)="sendMessage()">
+    ✉️
+  </button>
+</div>

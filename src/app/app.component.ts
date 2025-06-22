@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     this.inputElement?.nativeElement.focus();
   }
 
-  keydown(keyboardEvent: KeyboardEvent) {
+  keydown(keyboardEvent: KeyboardEvent): void {
     if (keyboardEvent.code === 'Enter') {
       if (keyboardEvent.target) {
         const inputEl = keyboardEvent.target as HTMLInputElement
@@ -26,12 +26,26 @@ export class AppComponent implements OnInit {
           inputEl.value = '';
         }
       }
-      const scrollTop = this.messageListElement?.nativeElement.scrollTop;
+      this.resetScroll();
+    }
+  }
 
-      if (scrollTop !== 0) {
-        if (this.messageListElement?.nativeElement.scrollTop) {
-          this.messageListElement.nativeElement.scrollTop = 0;
-        }
+  sendMessage(): void {
+    const value = this.inputElement?.nativeElement.value;
+
+    if (value?.length && value?.length > 0) {
+      this.messages.unshift(value)
+      this.inputElement!.nativeElement.value = '';
+      this.resetScroll();
+    }
+  }
+
+  resetScroll() {
+    const scrollTop = this.messageListElement?.nativeElement.scrollTop;
+
+    if (scrollTop !== 0) {
+      if (this.messageListElement?.nativeElement.scrollTop) {
+        this.messageListElement.nativeElement.scrollTop = 0;
       }
     }
   }
