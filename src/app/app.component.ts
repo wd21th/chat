@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   messageListElement?: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
-    this.inputElement?.nativeElement.focus();
+    this.focusInput();
   }
 
   keydown(keyboardEvent: KeyboardEvent): void {
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     if (value?.length && value?.length > 0) {
       this.messages.unshift(value)
       this.inputElement!.nativeElement.value = '';
+      this.focusInput();
       this.resetScroll();
     }
   }
@@ -48,5 +49,9 @@ export class AppComponent implements OnInit {
         this.messageListElement.nativeElement.scrollTop = 0;
       }
     }
+  }
+
+  focusInput(): void {
+    this.inputElement?.nativeElement.focus();
   }
 }
