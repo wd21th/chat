@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     if (keyboardEvent.code === 'Enter') {
       if (keyboardEvent.target) {
         const inputEl = keyboardEvent.target as HTMLInputElement
-        if (inputEl.value.length > 0) {
+        if (inputEl.value.trim().length > 0) {
           this.messages.unshift(inputEl.value)
           inputEl.value = '';
         }
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   sendMessage(): void {
     const value = this.inputElement?.nativeElement.value;
 
-    if (value?.length && value?.length > 0) {
+    if (value?.trim().length && value?.trim().length > 0) {
       this.messages.unshift(value)
       this.inputElement!.nativeElement.value = '';
       this.focusInput();
