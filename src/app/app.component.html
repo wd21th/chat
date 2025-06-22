@@ -1,5 +1,5 @@
 <div class="message-list">
-  @for(message of messages.reverse(); track $index) {
+  @for(message of messages; track $index) {
     <div class="message-list__item">{{message}}</div>
   }
 </div>

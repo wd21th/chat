@@ -16,7 +16,7 @@ export class AppComponent {
       if (keyboardEvent.target) {
         const inputEl = keyboardEvent.target as HTMLInputElement
         if (inputEl.value.length > 0) {
-          this.messages.push(inputEl.value)
+          this.messages.unshift(inputEl.value)
           inputEl.value = '';
         }
       }
