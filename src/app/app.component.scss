@@ -10,6 +10,7 @@
   overflow: scroll;
   display: flex;
   flex-direction: column-reverse;
+  scroll-behavior: smooth;
 
   &__item {
     width: fit-content;

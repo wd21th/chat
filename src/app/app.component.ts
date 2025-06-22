@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
   messages: Array<string> = [];
   @ViewChild('inputEl', { static: true })
   inputElement?: ElementRef<HTMLInputElement>;
+  @ViewChild('messageListEl')
+  messageListElement?: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
     this.inputElement?.nativeElement.focus();
@@ -22,6 +24,13 @@ export class AppComponent implements OnInit {
         if (inputEl.value.length > 0) {
           this.messages.unshift(inputEl.value)
           inputEl.value = '';
+        }
+      }
+      const scrollTop = this.messageListElement?.nativeElement.scrollTop;
+
+      if (scrollTop !== 0) {
+        if (this.messageListElement?.nativeElement.scrollTop) {
+          this.messageListElement.nativeElement.scrollTop = 0;
         }
       }
       console.log('keyboardEvent.target :', keyboardEvent.target);
