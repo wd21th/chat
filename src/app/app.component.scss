@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+}
+
+.message-list {
+  flex: 1;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__item {
+    width: fit-content;
+    background: #e3fee0;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+input {
+  padding: 10px;
+}

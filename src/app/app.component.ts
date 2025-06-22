@@ -9,5 +9,18 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'chat';
+  messages: Array<string> = [];
+
+  keydown(keyboardEvent: KeyboardEvent) {
+    if (keyboardEvent.code === 'Enter') {
+      if (keyboardEvent.target) {
+        const inputEl = keyboardEvent.target as HTMLInputElement
+        if (inputEl.value.length > 0) {
+          this.messages.push(inputEl.value)
+          inputEl.value = '';
+        }
+      }
+      console.log('keyboardEvent.target :', keyboardEvent.target);
+    }
+  }
 }
