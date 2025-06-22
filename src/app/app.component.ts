@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
           this.messageListElement.nativeElement.scrollTop = 0;
         }
       }
-      console.log('keyboardEvent.target :', keyboardEvent.target);
     }
   }
 }
