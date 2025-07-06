@@ -44,11 +44,13 @@ export class AppComponent implements OnInit {
   resetScroll() {
     const scrollTop = this.messageListElement?.nativeElement.scrollTop;
 
-    if (scrollTop !== 0) {
-      if (this.messageListElement?.nativeElement.scrollTop) {
-        this.messageListElement.nativeElement.scrollTop = 0;
+    setTimeout(() => {
+      if (scrollTop !== 0) {
+        if (this.messageListElement?.nativeElement.scrollTop) {
+          this.messageListElement.nativeElement.scrollTop = 0;
+        }
       }
-    }
+    }, 100);
   }
 
   focusInput(): void {
