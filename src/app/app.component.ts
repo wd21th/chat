@@ -9,7 +9,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class AppComponent implements OnInit {
   messages: Array<string> = [];
   @ViewChild('inputEl', { static: true })
-  inputElement?: ElementRef<HTMLInputElement>;
+  inputElement?: ElementRef<HTMLDivElement>;
   @ViewChild('messageListEl')
   messageListElement?: ElementRef<HTMLDivElement>;
 
@@ -20,10 +20,12 @@ export class AppComponent implements OnInit {
   keydown(keyboardEvent: KeyboardEvent): void {
     if (keyboardEvent.code === 'Enter') {
       if (keyboardEvent.target) {
-        const inputEl = keyboardEvent.target as HTMLInputElement
-        if (inputEl.value.trim().length > 0) {
-          this.messages.unshift(inputEl.value)
-          inputEl.value = '';
+        const inputEl = keyboardEvent.target as HTMLDivElement
+        if (inputEl.textContent) {
+          if (inputEl.textContent.trim().length > 0) {
+            this.messages.unshift(inputEl.textContent)
+            inputEl.textContent = '';
+          }
         }
       }
       this.resetScroll();
@@ -31,11 +33,11 @@ export class AppComponent implements OnInit {
   }
 
   sendMessage(): void {
-    const value = this.inputElement?.nativeElement.value;
+    const value = this.inputElement?.nativeElement.textContent;
 
     if (value?.trim().length && value?.trim().length > 0) {
       this.messages.unshift(value)
-      this.inputElement!.nativeElement.value = '';
+      this.inputElement!.nativeElement.textContent = '';
       this.focusInput();
       this.resetScroll();
     }

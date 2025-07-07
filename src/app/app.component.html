@@ -5,8 +5,9 @@
 </div>
 
 <div class="in-row">
-  <input #inputEl type="text" (keydown)="keydown($event)">
+  <div #inputEl type="text" (keydown)="keydown($event)" contenteditable="true"></div>
   <button (click)="sendMessage()">
     ✉️
   </button>
 </div>
+
