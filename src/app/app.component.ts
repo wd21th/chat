@@ -56,6 +56,8 @@ export class AppComponent implements OnInit {
   }
 
   focusInput(): void {
-    this.inputElement?.nativeElement.focus();
+    setTimeout(() => {
+      this.inputElement?.nativeElement.focus();
+    }, 0);
   }
 }
